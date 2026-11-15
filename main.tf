@@ -55,6 +55,22 @@ resource "google_compute_instance" "vm_instance" {
   EOT
 }
 
+# 5. Google Kubernetes Engine (GKE) Cluster
+resource "google_container_cluster" "gke_cluster" {
+  name     = "my-gke-cluster"
+  location = var.zone
+
+  initial_node_count = 1
+
+  node_config {
+    machine_type = var.instance_machine_type
+    disk_size_gb = 30
+    disk_type    = "pd-standard"
+  }
+
+  network    = google_compute_network.airtel_network.name
+  subnetwork = google_compute_subnetwork.subnet_test.name
+}
 
 # 6. Persistent Disk
 resource "google_compute_disk" "disk" {
