@@ -38,7 +38,7 @@ resource "google_compute_instance" "vm_instance" {
   }
 
   network_interface {
-    network    = google_compute_network.airtel_network.name
+    network    = google_compute_network.terraform-vpc.name
     subnetwork = google_compute_subnetwork.subnet_test.name
 
     access_config {
@@ -68,7 +68,7 @@ resource "google_container_cluster" "gke_cluster" {
     disk_type    = "pd-standard"
   }
 
-  network    = google_compute_network.airtel_network.name
+  network    = google_compute_network.terraform-vpc.name
   subnetwork = google_compute_subnetwork.subnet_test.name
 }
 
