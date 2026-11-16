@@ -32,7 +32,7 @@ resource "google_compute_instance" "vm_instance" {
 
   boot_disk {
     initialize_params {
-      image = "projects/debian-cloud/global/images/family/debian-11"
+      image = "projects/debian-cloud/global/images/family/debian-13"
       size  = 10
     }
   }
@@ -74,8 +74,8 @@ resource "google_container_cluster" "gke_cluster" {
 
 # 6. Persistent Disk
 resource "google_compute_disk" "disk" {
-  name  = "my-disk-sandesh"
-  size  = 10
-  type  = "pd-standard"
-  zone  = var.zone
+  name = "my-disk-sandesh"
+  size = 10
+  type = "pd-standard"
+  zone = var.zone
 }
